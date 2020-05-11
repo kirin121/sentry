@@ -18,7 +18,7 @@ import withOrganization from 'app/utils/withOrganization';
 import AbstractIntegrationDetailedView from './abstractIntegrationDetailedView';
 import AddIntegrationButton from './addIntegrationButton';
 import InstalledIntegration from './installedIntegrationInDirectory';
-import RequestIntegrationButton from "./requestIntegrationButton";
+import RequestIntegrationButton from './requestIntegrationButton';
 
 type State = {
   configurations: Integration[];
@@ -199,9 +199,7 @@ class IntegrationDetailedView extends AbstractIntegrationDetailedView<
       );
     }
 
-    return (
-      <RequestIntegrationButton />
-    );
+    return <RequestIntegrationButton />;
   }
 
   renderConfigurations() {
