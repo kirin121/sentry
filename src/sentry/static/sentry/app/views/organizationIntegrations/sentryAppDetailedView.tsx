@@ -16,6 +16,7 @@ import withOrganization from 'app/utils/withOrganization';
 
 import AbstractIntegrationDetailedView from './abstractIntegrationDetailedView';
 import UninstallAppButton from './removeIntegrationButton';
+import RequestIntegrationButton from './requestIntegrationButton';
 import SplitInstallationIdModal from './SplitInstallationIdModal';
 
 type State = {
@@ -231,25 +232,34 @@ class SentryAppDetailedView extends AbstractIntegrationDetailedView<
   }
 
   renderTopButton(disabledFromFeatures: boolean, userHasAccess: boolean) {
-    return !this.install ? (
-      <InstallButton
-        size="small"
-        priority="primary"
-        disabled={disabledFromFeatures || !userHasAccess}
-        onClick={() => this.handleInstall()}
-        style={{marginLeft: space(1)}}
-        data-test-id="install-button"
-      >
-        {t('Accept & Install')}
-      </InstallButton>
-    ) : (
-      <UninstallAppButton
-        install={this.install}
-        app={this.sentryApp}
-        onClickUninstall={this.handleUninstall}
-        onUninstallModalOpen={this.recordUninstallClicked}
-        disabled={!userHasAccess}
-      />
+    if (this.install) {
+      return (
+        <UninstallAppButton
+          app={this.sentryApp}
+          disabled={!userHasAccess}
+          install={this.install}
+          onClickUninstall={this.handleUninstall}
+          onUninstallModalOpen={this.recordUninstallClicked}
+        />
+      );
+    }
+
+    if (userHasAccess) {
+      return (
+        <InstallButton
+          data-test-id="install-button"
+          disabled={disabledFromFeatures}
+          onClick={() => this.handleInstall()}
+          priority="primary"
+          size="small"
+        >
+          {t('Accept & Install')}
+        </InstallButton>
+      );
+    }
+
+    return (
+      <RequestIntegrationButton />
     );
   }
 
