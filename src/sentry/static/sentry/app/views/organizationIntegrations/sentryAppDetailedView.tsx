@@ -18,8 +18,8 @@ import SplitInstallationIdModal from 'app/views/organizationIntegrations/SplitIn
 import {openModal} from 'app/actionCreators/modal';
 import {getSentryAppInstallStatus} from 'app/utils/integrationUtil';
 
-import {UninstallAppButton} from '../settings/organizationDeveloperSettings/sentryApplicationRow/installButtons';
 import AbstractIntegrationDetailedView from './abstractIntegrationDetailedView';
+import UninstallAppButton from './removeIntegrationButton';
 
 type State = {
   sentryApp: SentryApp;
