@@ -2,18 +2,19 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
 
-import {t} from 'app/locale';
 import Access from 'app/components/acl/access';
-import AddIntegrationButton from 'app/views/organizationIntegrations/addIntegrationButton';
 import Alert from 'app/components/alert';
 import Button from 'app/components/button';
 import Confirm from 'app/components/confirm';
-import {IconDelete, IconSettings} from 'app/icons';
-import IntegrationItem from 'app/views/organizationIntegrations/integrationItem';
 import Tooltip from 'app/components/tooltip';
-import {IntegrationProvider, Integration, Organization} from 'app/types';
+import {IconDelete, IconSettings} from 'app/icons';
+import {t} from 'app/locale';
 import SentryTypes from 'app/sentryTypes';
+import {Integration, IntegrationProvider, Organization} from 'app/types';
 import {trackIntegrationEvent} from 'app/utils/integrationUtil';
+
+import AddIntegrationButton from './addIntegrationButton';
+import IntegrationItem from './integrationItem';
 
 const CONFIGURABLE_FEATURES = ['commits', 'alert-rule'];
 
