@@ -16,6 +16,7 @@ type State = {
 
 const Alerts = createReactClass<Props, State>({
   displayName: 'Alerts',
+
   mixins: [Reflux.connect(AlertStore, 'alerts') as any],
 
   getInitialState() {
